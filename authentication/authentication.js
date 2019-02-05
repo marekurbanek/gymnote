@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken')
 
 const utils = require("../shared/utils")
 
-var privateKEY = fs.readFileSync('./authentication/keys/private.key', 'utf8')
-var publicKEY = fs.readFileSync('./authentication/keys/public.key', 'utf8')
+const privateKEY = fs.readFileSync('./authentication/keys/private.key', 'utf8')
+const publicKEY = fs.readFileSync('./authentication/keys/public.key', 'utf8')
 
 let options = {
   expiresIn: '36000000ms',

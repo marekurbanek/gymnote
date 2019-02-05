@@ -2,7 +2,7 @@ var sql = require("mssql/msnodesqlv8");
 
 var dbConfig = {
   driver: 'msnodesqlv8',
-  connectionString: 'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLExpress};Database={nodejs};Trusted_Connection={yes};'
+  connectionString: 'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLExpress};Database={gymnote};Trusted_Connection={yes};'
 };
 
 module.exports = function startConnection() {
