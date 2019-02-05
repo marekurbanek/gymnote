@@ -8,9 +8,9 @@ const router = express.Router({
 
 router.post('/', (req, res) => {
   const request = new sql.Request()
-  request.query(`INSERT INTO sets (name, workoutId) values ('${req.body.name}', ${req.body.workoutId})`)
-    .then(comments => {
-      res.json(comments.recordset)
+  request.query(`INSERT INTO sets (exerciseId, repetitions, weight) values (${req.body.exerciseId}, ${req.body.repetitions}, ${req.body.weight})`)
+    .then(sets => {
+      res.json(sets.recordset)
     })
     .catch(err => {
       console.log(err)

@@ -8,6 +8,7 @@ const startConnection = require("./db")
 
 const workoutsRoutes = require("./workouts/workouts")
 const exercisesRoutes = require("./exercises/exercises")
+const setsRoutes = require("./sets/sets")
 
 const corsOptions = {
   origin: 'http://localhost:4200',
@@ -25,6 +26,7 @@ app.use(fileUpload())
 
 app.use("/workouts", workoutsRoutes)
 app.use("/exercises", exercisesRoutes)
+app.use("/sets", setsRoutes)
 
 app.listen(5000, function () {
   console.log("Server is running..")
