@@ -51,28 +51,4 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// transformResponseToWorkouts = (workoutData) => {
-
-//   // const workoutsRes = workoutData[0];
-//   // const exercisesRes = workoutData[1];
-//   // const setsRes = workoutData[2];
-
-//   // exercisesRes.forEach(exercise => {
-//   //   exercise['sets'] = [];
-//   // });
-//   // workoutsRes.forEach(workout => {
-//   //   workout['exercises'] = [];
-//   // });
-
-//   // setsRes.forEach(set => {
-//   //   exercisesRes.find(x => x.id === set.exerciseId)['sets'].push(set);
-//   // });
-
-//   // exercisesRes.forEach(exercise => {
-//   //   workoutsRes.find(x => x.id === exercise.workoutId)['exercises'].push(exercise);
-//   // });
-
-//   // return workoutsRes
-// }
-
 module.exports = router
