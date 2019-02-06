@@ -37,6 +37,20 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  Workout.findByPk(req.params.id)
+    .then(work => {
+      work.destroy()
+        .then(() => {
+          res.json("Destroyed")
+        })
+        .catch(err => {
+          res.json(err)
+          console.log(err)
+        })
+    })
+})
+
 // transformResponseToWorkouts = (workoutData) => {
 
 //   // const workoutsRes = workoutData[0];
