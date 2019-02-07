@@ -34,10 +34,16 @@ app.use("/exercises", exercisesRoutes)
 app.use("/sets", setsRoutes)
 app.use("/users", usersRoutes)
 
-app.listen(5000, function () {
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, function () {
   console.log("Server is running..")
   Exercise.hasMany(Run)
   Workout.hasMany(Exercise)
   User.hasMany(Workout)
   db.sync()
+  console.log("PORT")
+  console.log(process.env.PORT)
+  console.log("Is  Production ??")
+  console.log(process.env.NODE_ENV)
 })
