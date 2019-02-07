@@ -9,14 +9,6 @@ const router = express.Router({
 })
 
 router.post('/register', (req, res) => {
-  // Check if user exists
-  // User.findAll({where: {username: req.body.username}})
-  //   .then(() => {
-  //     res.status(400).json({
-  //       errorMessage: "User with that username allready exist."
-  //     })
-  //   })
-
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (!err) {
       User.findOrCreate({
@@ -82,44 +74,6 @@ router.post('/login', (req, res) => {
         errorMessage: "User with thath username doesn't exist"
       })
     })
-  // const request = new sql.Request()
-  // let username = req.body.username
-  // getUserPasswordQuery = `SELECT password FROM users WHERE username = '${username}'`
-  // request.query(getUserPasswordQuery)
-  //   .then(user => {
-  //     const hash = user.recordset[0].password
-  //     bcrypt.compare(req.body.password, hash)
-  //       .then(result => {
-  //         if (result) {
-  //           utils.getUserIdByUsername(username)
-  //             .then(result => {
-  //               let token = auth.sign({
-  //                 username
-  //               })
-  //               let userId = result.recordset[0].id
-  //               res.json({
-  //                 token,
-  //                 expirationTime: helpers.getExpirationTimeFromToken(token),
-  //                 username,
-  //                 userId
-  //               })
-  //             })
-  //         } else {
-  //           res.status(400).json({
-  //             errorMessage: "Password is incorrect"
-  //           })
-  //         }
-  //       })
-  //       .catch(err => {
-  //         res.send("Upss... Something went wrong " + err)
-  //       })
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //     res.status(400).json({
-  //       errorMessage: "User with thath username doesn't exist"
-  //     })
-  //   })
 })
 
 router.get('/data', auth.verify, (req, res) => {
