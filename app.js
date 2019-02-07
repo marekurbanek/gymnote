@@ -32,6 +32,10 @@ app.use("/exercises", exercisesRoutes)
 app.use("/sets", setsRoutes)
 app.use("/users", usersRoutes)
 
+app.get("/*", (req, res) => {
+  res.redirect("/")
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, function () {

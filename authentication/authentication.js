@@ -32,9 +32,7 @@ module.exports = {
       }
     } catch (err) {
       console.log(err)
-      res.status(401).json({
-        errorMessage: "You have to be logged in to do this."
-      })
+      res.status(401).redirect('/login')
     }
   },
   decode: (token) => {
