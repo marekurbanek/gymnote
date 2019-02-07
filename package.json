@@ -6,7 +6,9 @@
   },
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node app"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
