@@ -2,14 +2,15 @@ const express = require('express')
 const Workout = require('../models/workout')
 const Exercise = require('../models/exercise')
 const Run = require('../models/run')
-const Sequelize = require('sequelize')
+const auth = require('../authentication/authentication')
 
 const router = express.Router({
   mergeParams: true
 })
 
-router.get('/', (req, res) => {
+router.get('/', auth.verify, (req, res) => {
   Workout.findAll({
+      where: {userId: req.userId},
       include: [{
         model: Exercise,
         include: [
@@ -25,9 +26,10 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', auth.verify, (req, res) => {
   Workout.create({
-      name: req.body.name
+      name: req.body.name,
+      userId: req.userId
     })
     .then((workout) => {
       res.json(workout)
