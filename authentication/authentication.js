@@ -1,7 +1,7 @@
 const fs = require('fs')
 const jwt = require('jsonwebtoken')
 
-const utils = require("../shared/utils")
+const User = require('../models/user')
 
 const privateKEY = fs.readFileSync('./authentication/keys/private.key', 'utf8')
 const publicKEY = fs.readFileSync('./authentication/keys/public.key', 'utf8')
@@ -20,10 +20,10 @@ module.exports = {
       let token = req.headers['authorization']
       if (jwt.verify(token, publicKEY, options)) {
         let username = jwt.verify(token, publicKEY, options).username
-        utils.getUserIdByUsername(username)
-          .then(userId => {
-            req.userId = userId.recordset[0].id
-            req.username = username
+        User.find({where: {username: username}})
+          .then(user => {
+            req.userId = user.id
+            req.username = user.username
             next()
           })
           .catch(err => {
